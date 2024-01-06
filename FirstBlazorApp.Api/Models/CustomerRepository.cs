@@ -14,24 +14,24 @@ namespace FirstBlazorApp.Api.Models
 
         public IEnumerable<Customer> GetAllCustomers()
         {
-            return _appDbContext.Employees;
+            return _appDbContext.Customers;
         }
 
         public Customer GetCustomerById(int customerId)
         {
-            return _appDbContext.Employees.FirstOrDefault(c => c.CustomerId == customerId);
+            return _appDbContext.Customers.FirstOrDefault(c => c.CustomerId == customerId);
         }
 
         public Customer AddCustomer(Customer employee)
         {
-            var addedEntity = _appDbContext.Employees.Add(employee);
+            var addedEntity = _appDbContext.Customers.Add(employee);
             _appDbContext.SaveChanges();
             return addedEntity.Entity;
         }
 
         public Customer UpdateCustomer(Customer customer)
         {
-            var foundCustomer = _appDbContext.Employees.FirstOrDefault(e => e.CustomerId == customer.CustomerId);
+            var foundCustomer = _appDbContext.Customers.FirstOrDefault(e => e.CustomerId == customer.CustomerId);
 
             if (foundCustomer != null)
             {
@@ -53,10 +53,10 @@ namespace FirstBlazorApp.Api.Models
 
         public void DeleteCustomer(int customerId)
         {
-            var foundEmployee = _appDbContext.Employees.FirstOrDefault(e => e.CustomerId == customerId);
+            var foundEmployee = _appDbContext.Customers.FirstOrDefault(e => e.CustomerId == customerId);
             if (foundEmployee == null) return;
 
-            _appDbContext.Employees.Remove(foundEmployee);
+            _appDbContext.Customers.Remove(foundEmployee);
             _appDbContext.SaveChanges();
         }
     }

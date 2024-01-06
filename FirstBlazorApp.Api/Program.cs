@@ -2,12 +2,24 @@ using FirstBlazorApp.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+foreach (var pair in args)
+{
+    Console.WriteLine($"{pair}");
+}
+var config = builder.Configuration;
+foreach (var pair in config.AsEnumerable())
+{
+    Console.WriteLine($"{pair.Key} = {pair.Value}");
+}
 
 // Add services to the container.
 
 builder.Services.AddDbContext<AppDbContext>(options => {
-    options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:DefaultConnection"]);
+
+    var connectionString = builder.Configuration["ConnectionStrings:BlazorCustomersConnection"];
+    Console.WriteLine($"Connection string: {connectionString}");
+
+    options.UseSqlServer(connectionString);
 });
 
 builder.Services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
