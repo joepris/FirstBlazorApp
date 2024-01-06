@@ -1,0 +1,10 @@
+﻿@page "/"
+
+<h1 class="page-title">Welcome to my first Blazor App</h1>
+<br />
+<h3>Welcome to my first blazor app.</h3>
+
+@foreach (var widgetType in Widgets)
+{
+    <DynamicComponent Type="widgetType"></DynamicComponent>
+}

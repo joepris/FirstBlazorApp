@@ -1,0 +1,37 @@
+﻿@page "/customeroverview"
+@using FirstBlazorApp.Components
+@using FirstBlazorApp.Model;
+
+<h3>Customer Overview</h3>
+
+@if (Customers == null)
+{
+    <h1>No Customers...</h1>
+}
+else
+{
+    <QuickViewPopup Customer="_selectedCustomer"></QuickViewPopup>
+
+    <div class="row">
+        @foreach (var customer in Customers)
+        {
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+
+                <CustomerCard Customer="customer" CustomerQuickViewClicked="ShowQuickViewPopup"></CustomerCard>
+
+
+            </div>
+
+        }
+        @if(_addedCustomer != null)
+        {
+            <CustomerCard Customer="_addedCustomer" CustomerQuickViewClicked="ShowQuickViewPopup"></CustomerCard>
+        }
+        
+    </div>
+
+}
+
+@code {
+    Customer _addedCustomer = null;
+}

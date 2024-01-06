@@ -1,0 +1,83 @@
+﻿@page "/customeredit"
+@page "/customeredit/{CustomerId}"
+
+@using FirstBlazorApp.Model
+
+@if (!false)
+{
+    <section class="customer-edit bg-white p-5 rounded">
+        
+        <h3>Add Customer</h3>
+        <h1 class="page-title">Details for @Customer.FirstName @Customer.LastName</h1>
+
+        <EditForm Model="@Customer" OnValidSubmit="SaveCustomer">
+
+            <div class="row mb-3">
+                <label for="firstName" class="col-form-label col-md-3">First name: </label>
+                <div class="col-md-8">
+                    <InputText id="firstName" class="form-control col-md-8" @bind-Value="@Customer.FirstName" placeholder="Enter first name"></InputText>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="lastName" class="col-form-label col-md-3">Last name: </label>
+                <div class="col-md-8">
+                    <InputText id="lastName" class="form-control col-md-8" @bind-Value="@Customer.LastName" placeholder="Enter last name"></InputText>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="maritalstatus" class="col-form-label col-md-3">Marital status: </label>
+                <div class="col-md-8">
+                    <InputSelect id="maritalstatus" class="form-select col-md-8" @bind-Value=@Customer.MaritalStatus>
+                        <option value="@(MaritalStatus.Single)">Single</option>
+                        <option value="@(MaritalStatus.Married)">Married</option>
+                        <option value="@(MaritalStatus.Other)">Other</option>
+                    </InputSelect>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <InputRadioGroup Name="genderRadioGroup" @bind-Value="@Customer.Gender">
+                    <label class="col-form-label col-md-3">Gender: </label>
+                    <div class="col-md-8">
+                        @foreach (var gender in (Gender[])Enum.GetValues(typeof(Gender)))
+                        {
+                            <InputRadio Name="genderRadioGroup" Value="gender" class="form-check-input" />
+                            <label class="form-check-label">
+                                @gender
+                            </label>
+                            <br />
+                        }
+                    </div>
+                </InputRadioGroup>
+            </div>
+
+            <div class="row mb-3">
+                <label for="email" class="col-form-label col-md-3">Email: </label>
+                <div class="col-md-8">
+                    <InputText id="email" class="form-control col-md-8" @bind-Value="@Customer.Email" placeholder="Enter email"></InputText>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="phonenumber" class="col-form-label col-md-3">Phone number: </label>
+                <div class="col-md-8">
+                    <InputText id="phonenumber" class="form-control col-md-8" @bind-Value="@Customer.PhoneNumber" placeholder="Enter phone number"></InputText>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary me-1">Save Customer</button>
+
+            <button type="button" class="btn btn-outline-primary ms-1" href="@($"customeroverview")">Back to overview</button>
+        </EditForm>
+    </section>
+}
+else
+{
+    <div class="alert">Nothing Here</div>
+    <button type="button" class="btn btn-outline-primary" href="@($"customeroverview")">Back to overview</button>
+}
+@code {
+
+}
