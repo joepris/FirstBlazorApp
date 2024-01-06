@@ -1,6 +1,5 @@
 ﻿@page "/customeroverview"
 @using FirstBlazorApp.Components
-@using FirstBlazorApp.Model;
 
 <h3>Customer Overview</h3>
 
@@ -23,15 +22,10 @@ else
             </div>
 
         }
-        @if(_addedCustomer != null)
-        {
-            <CustomerCard Customer="_addedCustomer" CustomerQuickViewClicked="ShowQuickViewPopup"></CustomerCard>
-        }
-        
     </div>
 
 }
 
 @code {
-    Customer _addedCustomer = null;
+
 }
