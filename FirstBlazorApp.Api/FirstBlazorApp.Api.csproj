@@ -4,14 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>eff9e8cb-46eb-4354-bb39-acaad428e7f6</UserSecretsId>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Migrations\**" />
-	  <Content Remove="Migrations\**" />
-	  <EmbeddedResource Remove="Migrations\**" />
-	  <None Remove="Migrations\**" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
@@ -28,6 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Migrations\" />
 		<Folder Include="wwwroot\Uploads\" />
 	</ItemGroup>
 

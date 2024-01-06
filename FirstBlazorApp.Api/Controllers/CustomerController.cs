@@ -58,7 +58,7 @@ namespace FirstBlazorApp.Api.Controllers
             return Created("customer", createdCustomer);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateCustomer([FromBody] Customer customer)
         {
             if (customer == null)
@@ -94,7 +94,7 @@ namespace FirstBlazorApp.Api.Controllers
 
             _customerRepository.DeleteCustomer(id);
 
-            return NoContent();//success
+            return NoContent(); //success
         }
     }
 }

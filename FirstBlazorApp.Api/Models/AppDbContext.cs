@@ -10,7 +10,7 @@ namespace FirstBlazorApp.Api.Models
 
         }
 
-        public DbSet<Customer> Employees { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

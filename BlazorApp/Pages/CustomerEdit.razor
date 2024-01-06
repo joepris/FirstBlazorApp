@@ -1,5 +1,5 @@
-﻿@page "/customeredit"
-@page "/customeredit/{CustomerId}"
+﻿@page "/customer/add"
+@page "/customer/{CustomerId}/edit"
 
 @using FirstBlazorApp.Model
 
@@ -10,7 +10,7 @@
         <h2>Customer Form</h2>
         <h3 class="page-title">Details for @Customer.FirstName @Customer.LastName</h3>
 
-        <EditForm Model="@Customer">
+        <EditForm Model="@Customer" OnValidSubmit="@SaveCustomer">
             <div class="row mb-3">
                 <label for="lastName" class="col-form-label col-md-3">Last name: </label>
                 <div class="col-md-8">
@@ -26,6 +26,14 @@
                     @*<ValidationMessage class="offset-md-3 col-md-8" For="@(() => Customer.FirstName)" />*@
                 </div>
 
+            </div>
+
+            <div class="row mb-3">
+                <label for="email" class="col-form-label col-md-3">Age: </label>
+                <div class="col-md-8">
+                    <InputNumber id="email" class="form-control col-md-8" @bind-Value="@Customer.Age" placeholder="Enter Age"></InputNumber>
+                    @*<ValidationMessage class="offset-md-3 col-md-8" For="@(() => Customer.Email)" />*@
+                </div>
             </div>
 
             <div class="row mb-3">
@@ -91,15 +99,15 @@
                 </button>
             }*@
 
-            <button type="button" class="btn btn-outline-primary ms-1" href="@($"customeroverview")">Back to overview</button>
+            <a type="button" class="btn btn-outline-primary ms-1" href="@($"/customers")">Back to overview</a>
         </EditForm>
     </section>
 }
 else
 {
     <div class="alert">Nothing Here</div>
-    <button type="button" class="btn btn-outline-primary" href="@($"customeroverview")">Back to overview</button>
+    <a type="button" class="btn btn-outline-primary" href="@($"customers")">Back to overview</a>
 }
 @code {
-
+    
 }

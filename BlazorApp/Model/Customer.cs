@@ -10,7 +10,7 @@
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public MaritalStatus MaritalStatus { get; set; }
-        public int JobCategoryId { get; set; }
+        public int? JobCategoryId { get; set; }
         public JobCategory? JobCategory { get; set; } = default!;
     }
 }

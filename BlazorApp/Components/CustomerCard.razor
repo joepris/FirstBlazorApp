@@ -1,15 +1,19 @@
 ﻿<div class="col">
     <div class="card rounded-3 employee-card">
         <div class="card-header py-3">
-            <h4>@Customer.FirstName @Customer.LastName</h4>
+            <img class="rounded-circle" src="@($"https://picsum.photos/200?random={Customer.CustomerId}")" />
+            <h4 class="text-center mt-4">@Customer.FirstName @Customer.LastName</h4>
         </div>
         <div class="card-body rounded-bottom employee-card text-center shadow">
 
-            <button class="btn btn-primary btn-sm mb-1" @onclick="@(async () => await CustomerQuickViewClicked.InvokeAsync(Customer))">
+            <button class="btn btn-primary btn-sm mb-1 text-white" @onclick="@(async () => await CustomerQuickViewClicked.InvokeAsync(Customer))">
                 Quick view
             </button>
-            <a href="@($"customerdetail/{Customer.CustomerId}")" class="btn btn-outline-primary btn-sm mb-1">
-                Full details
+            <a href="@($"customer/{Customer.CustomerId}")" class="btn btn-outline-primary btn-sm mb-1">
+                <span class="oi oi-eye" aria-hidden="true"></span> Full details
+            </a>
+            <a href="@($"customer/{Customer.CustomerId}/edit")" class="btn btn-outline-primary btn-sm mb-1">
+                <span class="oi oi-pencil" aria-hidden="true"></span> Edit
             </a>
             @*            <button class="btn btn-outline-primary btn-sm mb-1" @onclick="(() => NavigateToDetails(Employee))">
             Full details

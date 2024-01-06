@@ -4,7 +4,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="titleLabel">Employee Quick Add</h5>
+                    <h5 class="modal-title" id="titleLabel">Employee Summary</h5>
                     <button type="button" class="close btn btn-lg" @onclick="@Close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -42,7 +42,12 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-primary" @onclick="@Close">Close</button>
+                    <div class="modal-controls float-end">
+                        <a href="@($"customer/{Customer.CustomerId}/edit")" class="btn btn-outline-primary btn-sm mb-1">
+                            <span class="oi oi-pencil" aria-hidden="true"></span> Edit
+                        </a>
+                        <button type="button" class="btn btn-outline-primary btn-sm mb-1" @onclick="@Close">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
